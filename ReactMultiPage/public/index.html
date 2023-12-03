@@ -2,485 +2,544 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <link rel="stylesheet" type="text/css" href="slide navbar style.css"/>
-    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <meta name="theme-color" content="#000000"/>
-    <meta name="description" content="Web site created using create-react-app"/>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
-    <title>AB4S</title>    
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />    
+    <link rel="stylesheet" type="text/css" href="./home.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+     <!-- Custom fonts for this template -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'> 
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <!-- Custom CSS -->
+      <style>
+        /* Add animation to the login and signup form */
+        .form-control {
+          animation: fadeInUp 0.5s;
+        }
+        /* Add animation to the social login buttons */
+        .social-btn {
+          animation: fadeInUp 0.5s;
+          margin-top: 10px;
+        }
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        /* Responsive design for mobile and desktop */
+        @media (max-width: 767px) {
+          .login-form {
+            padding: 15px;
+          }
+          .social-btn {
+            width: 100%;
+            text-align: center;
+          }
+        }
+    </style>
+   <title>AB4S</title>    
   </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <script>
-      $(document).ready(function(){    
-        // Variables
-        var clickedTab = $(".tabs > .active");
-        var tabWrapper = $(".tab__content");
-        var activeTab = tabWrapper.find(".active");
-        var activeTabHeight = activeTab.outerHeight();
-        
-        // Show tab on page load
-        activeTab.show();
-        
-        // Set height of wrapper on page load
-        tabWrapper.height(activeTabHeight);
-        
-        $(".tabs > li").on("click", function() {
-            
-            // Remove class from active tab
-            $(".tabs > li").removeClass("active");
-            
-            // Add class active to clicked tab
-            $(this).addClass("active");
-            
-            // Update clickedTab variable
-            clickedTab = $(".tabs .active");
-            
-            // fade out active tab
-            activeTab.fadeOut(250, function() {
-                
-                // Remove active class all tabs
-                $(".tab__content > li").removeClass("active");
-                
-                // Get index of clicked tab
-                var clickedTabIndex = clickedTab.index();
-    
-                // Add class active to corresponding tab
-                $(".tab__content > li").eq(clickedTabIndex).addClass("active");
-                
-                // update new active tab
-                activeTab = $(".tab__content > .active");
-                
-                // Update variable
-                activeTabHeight = activeTab.outerHeight();
-                
-                // Animate height of wrapper to new tab height
-                tabWrapper.stop().delay(50).animate({
-                    height: activeTabHeight
-                }, 500, function() {
-                    
-                    // Fade in active tab
-                    activeTab.delay(50).fadeIn(250);
-                    
-                });
-            });
-        });
-    });
-    
+<body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>     
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+  <script>
+      // Show signup form and hide login form on click of signup link
+      $('.signup-link').click(function() {
+      $('.login-form').hide();
+      $('.signup-form').show();
+      });
+      // Show login form and hide signup form on click of login link
+      $('.login-link').click(function() {
+      $('.login-form').show();
+      $('.signup-form').hide();
+      });
     </script>
     <script>
-      /*
-      * We trigger the factory() function is different
-      * ways to support modular JavaScript libraries. See
-      * the 'Wrapping Up' section of the tutorial for
-      * more information
-      *
-      */
-      ;(function(factory){
-        
-        if (typeof define === 'function' && define.amd) {
-            define(['jquery'], factory);
-        } else if (typeof exports !== 'undefined') {
-            module.exports = factory(require('jquery'));
-        } else {
-            factory(jQuery);
-        }
+      var Slider = (function() {
+      var initSlider = function() {
+          var dir = $("html").attr("dir");
+          var swipeHandler = new Hammer(document.getElementById("slider"));
+          swipeHandler.on('swipeleft', function(e) {
+              if (dir == "rtl")
+                  $(".arrow-left").trigger("click");
+              else
+                  $(".arrow-right").trigger("click");
+          });
 
-      })(function($){        
-        /*
-        * We define Zippy as a variable of type ‘function’. 
-        * Here, we use an anonymous function to ensure 
-        * that the logic inside the function is executed immediately. 
-        *
-        */
-        var Zippy = (function(element, settings){
-          
-          var instanceUid = 0;          
-          /*
-          * The constructor function for Zippy
-          *
-          */
-          function _Zippy(element, settings){
-            this.defaults = {
-              slideDuration: '3000',
-              speed: 500,
-              arrowRight: '.arrow-right',
-              arrowLeft: '.arrow-left'
-            };
-            
-            // We create a new property to hold our default settings after they
-            // have been merged with user supplied settings
-            this.settings = $.extend({},this,this.defaults,settings);
-            
-            // This object holds values that will change as the plugin operates
-            this.initials = {
-              currSlide : 0,
-              $currSlide: null,
-              totalSlides : false,
-              csstransitions: false
-            };
-            
-            // Attaches the properties of this.initials as direct properties of Zippy
-            $.extend(this,this.initials);
-            
-            // Here we'll hold a reference to the DOM element passed in
-            // by the $.each function when this plugin was instantiated
-            this.$el = $(element);
-            
-            // Ensure that the value of 'this' always references Zippy
-            this.changeSlide = $.proxy(this.changeSlide,this);
-            
-            // We'll call our initiator function to get things rolling!
-            this.init();
-            
-            // A little bit of metadata about the instantiated object
-            // This property will be incremented everytime a new Zippy carousel is created
-          // It provides each carousel with a unique ID
-            this.instanceUid = instanceUid++;
-          }          
-          return _Zippy;        
-        })();
-        
-        /**
-         * Called once per instance
-         * Calls starter methods and associate the '.zippy-carousel' class
-         * @params void
-         * @returns void
-         *
-         */
-        Zippy.prototype.init = function(){
-          //Test to see if cssanimations are available
-          this.csstransitionsTest();
-          // Add a class so we can style our carousel
-          this.$el.addClass('zippy-carousel');
-          // Build out any DOM elements needed for the plugin to run
-          // Eg, we'll create an indicator dot for every slide in the carousel
-          this.build();
-          // Eg. Let the user click next/prev arrows or indicator dots
-          this.events();
-          // Bind any events we'll need for the carousel to function
-          this.activate();
-          // Start the timer loop to control progression to the next slide
-          this.initTimer();
-        };
-        
-        /**
-         * Appropriated out of Modernizr v2.8.3
-         * Creates a new DOM element and tests existence of properties on it's
-         * Style object to see if CSSTransitions are available
-         * @params void
-         * @returns void
-         *
-         */
-        Zippy.prototype.csstransitionsTest = function(){
-          var elem = document.createElement('modernizr');
-          //A list of properties to test for
-          var props = ["transition","WebkitTransition","MozTransition","OTransition","msTransition"];
-          //Iterate through our new element's Style property to see if these properties exist
-          for ( var i in props ) {
-            var prop = props[i];
-            var result = elem.style[prop] !== undefined ? prop : false;
-            if (result){
-              this.csstransitions = result;
-              break;
-            } 
-          } 
-        };
-        
-        /**
-         * Add the CSSTransition duration to the DOM Object's Style property
-         * We trigger this function just before we want the slides to animate
-         * @params void
-         * @returns void
-         *
-         */
-        Zippy.prototype.addCSSDuration = function(){
-          var _ = this;
-          this.$el.find('.slide').each(function(){
-            this.style[_.csstransitions+'Duration'] = _.settings.speed+'ms';
+          swipeHandler.on('swiperight', function(e) {
+              if (dir == "rtl")
+                  $(".arrow-right").trigger("click");
+              else
+                  $(".arrow-left").trigger("click");
           });
-        }
-        
-        /**
-         * Remove the CSSTransition duration from the DOM Object's style property
-         * We trigger this function just after the slides have animated
-         * @params void
-         * @returns void
-         *
-         */
-        Zippy.prototype.removeCSSDuration = function(){
-          var _ = this;
-          this.$el.find('.slide').each(function(){
-            this.style[_.csstransitions+'Duration'] = '';
-          });
-        }
-        
-        /**
-         * Creates a list of indicators based on the amount of slides
-         * @params void
-         * @returns void
-         *
-         */ 
-        Zippy.prototype.build = function(){
-          var $indicators = this.$el.append('<ul class="indicators" >').find('.indicators');
-          this.totalSlides = this.$el.find('.slide').length;
-          for(var i = 0; i < this.totalSlides; i++) $indicators.append('<li data-index='+i+'>');
-        };
-        
-        /**
-         * Activates the first slide
-         * Activates the first indicator
-         * @params void
-         * @returns void
-         *
-         */ 
-        Zippy.prototype.activate = function(){
-          this.$currSlide = this.$el.find('.slide').eq(0);
-          this.$el.find('.indicators li').eq(0).addClass('active');
-        };
-        
-        /**
-         * Associate event handlers to events
-         * For arrow events, we send the placement of the next slide to the handler
-         * @params void
-         * @returns void
-         *
-         */
-        Zippy.prototype.events = function(){
-          $('body')
-            .on('click',this.settings.arrowRight,{direction:'right'},this.changeSlide)
-            .on('click',this.settings.arrowLeft,{direction:'left'},this.changeSlide)
-            .on('click','.indicators li',this.changeSlide);
-        };
-        
-        /**
-         * TIMER
-         * Resets the timer
-         * @params void
-         * @returns void
-         *
-         */
-        Zippy.prototype.clearTimer = function(){
-          if (this.timer) clearInterval(this.timer);
-        };
-        
-        /**
-         * TIMER
-         * Initialise the timer
-         * @params void
-         * @returns void
-         *
-         */
-        Zippy.prototype.initTimer = function(){
-          this.timer = setInterval(this.changeSlide, this.settings.slideDuration);
-        };
-        
-        /**
-         * TIMER
-         * Start the timer
-         * Reset the throttle to allow changeSlide to be executable
-         * @params void
-         * @returns void
-         *
-         */
-        Zippy.prototype.startTimer = function(){
-          this.initTimer();
-          this.throttle = false;
-        };
-        
-        /**
-         * MAIN LOGIC HANDLER
-         * Triggers a set of subfunctions to carry out the animation
-         * @params	object	event
-         * @returns void
-         *
-         */
-        Zippy.prototype.changeSlide = function(e){
-          //Ensure that animations are triggered one at a time
-          if (this.throttle) return;
-          this.throttle = true;
-          
-          //Stop the timer as the animation is getting carried out
-          this.clearTimer();
-          
-          // Returns the animation direction (left or right)
-          var direction = this._direction(e);
-          
-          // Selects the next slide
-          var animate = this._next(e,direction);
-          if (!animate) return;
-          
-          //Active the next slide to scroll into view
-          var $nextSlide = this.$el.find('.slide').eq(this.currSlide).addClass(direction + ' active');
-          
-          if (!this.csstransitions){
-            this._jsAnimation($nextSlide,direction);
-          } else {
-            this._cssAnimation($nextSlide,direction);
-          }
-        };
-        
-        /**
-         * Returns the animation direction, right or left
-         * @params	object	event
-         * @returns strong	animation direction
-         *
-         */
-        Zippy.prototype._direction = function(e){
-          var direction;
-          
-          // Default to forward movement
-          if (typeof e !== 'undefined'){
-            direction = (typeof e.data === 'undefined' ? 'right' : e.data.direction);
-          } else {
-            direction = 'right';
-          }
-          return direction;
-        };
-        
-        /**
-         * Updates our plugin with the next slide number
-         * @params	object	event
-         * @params	string	animation direction
-         * @returns boolean continue to animate?
-         *
-         */
-        Zippy.prototype._next = function(e,direction){
-          
-          // If the event was triggered by a slide indicator, we store the data-index value of that indicator
-          var index = (typeof e !== 'undefined' ? $(e.currentTarget).data('index') : undefined);
-          
-          //Logic for determining the next slide
-          switch(true){
-            //If the event was triggered by an indicator, we set the next slide based on index
-            case( typeof index !== 'undefined'):
-              if (this.currSlide == index){
-                this.startTimer();
-                return false;
-              } 
-              this.currSlide = index;
-            break;
-            case(direction == 'right' && this.currSlide < (this.totalSlides - 1)):
-              this.currSlide++;
-            break;
-            case(direction == 'right'):
-              this.currSlide = 0;
-            break;
-            case(direction == 'left' && this.currSlide === 0):
-              this.currSlide = (this.totalSlides - 1);
-            break;
-            case(direction == 'left'):
-              this.currSlide--;
-            break;
-          }
-          return true;
-        };
-        
-        /**
-         * Executes the animation via CSS transitions
-         * @params	object	Jquery object the next slide to slide into view
-         * @params	string	animation direction
-         * @returns void
-         *
-         */
-        Zippy.prototype._cssAnimation = function($nextSlide,direction){
-          //Init CSS transitions
-          setTimeout(function(){
-            this.$el.addClass('transition');
-            this.addCSSDuration();
-            this.$currSlide.addClass('shift-'+direction);
-          }.bind(this),100);
-          
-          //CSS Animation Callback
-          //After the animation has played out, remove CSS transitions
-          //Remove unnecessary classes
-          //Start timer
-          setTimeout(function(){
-            this.$el.removeClass('transition');
-            this.removeCSSDuration();
-            this.$currSlide.removeClass('active shift-left shift-right');
-            this.$currSlide = $nextSlide.removeClass(direction);
-            this._updateIndicators();
-            this.startTimer();
-          }.bind(this),100 + this.settings.speed);
-        };
-        
-        /**
-         * Executes the animation via JS transitions
-         * @params	object	Jquery object the next slide to slide into view
-         * @params	string	animation direction
-         * @returns void
-         *
-         */
-        Zippy.prototype._jsAnimation = function($nextSlide,direction){
-          //Cache this reference for use inside animate functions
-          var _ = this;
-          
-          // See CSS for explanation of .js-reset-left
-          if(direction == 'right') _.$currSlide.addClass('js-reset-left');
-          
-          var animation = {};
-          animation[direction] = '0%';
-          
-          var animationPrev = {};
-          animationPrev[direction] = '100%';
-          
-          //Animation: Current slide
-          this.$currSlide.animate(animationPrev,this.settings.speed);
-          
-          //Animation: Next slide
-          $nextSlide.animate(animation,this.settings.speed,'swing',function(){
-            //Get rid of any JS animation residue
-            _.$currSlide.removeClass('active js-reset-left').attr('style','');
-            //Cache the next slide after classes and inline styles have been removed
-            _.$currSlide = $nextSlide.removeClass(direction).attr('style','');
-            _._updateIndicators();
-            _.startTimer();
-          });
-        };
-        
-        /**
-         * Ensures the slide indicators are pointing to the currently active slide
-         * @params	void
-         * @returns	void
-         *
-         */
-        Zippy.prototype._updateIndicators = function(){
-          this.$el.find('.indicators li').removeClass('active').eq(this.currSlide).addClass('active');
-        };
-        
-        /**
-         * Initialize the plugin once for each DOM object passed to jQuery
-         * @params	object	options object
-         * @returns void
-         *
-         */
-        $.fn.Zippy = function(options){
-          
-          return this.each(function(index,el){
-            
-            el.Zippy = new Zippy(el,options);
-            
-          });
-          
-        };
-        
 
+          $(".arrow-right , .arrow-left").click(function(event) {
+              var nextActiveSlide = $(".slide.active").next();
+
+              if ($(this).hasClass("arrow-left"))
+                  nextActiveSlide = $(".slide.active").prev();
+
+              if (nextActiveSlide.length > 0) {
+                  var nextActiveIndex = nextActiveSlide.index();
+                  $(".dots span").removeClass("active");
+                  $($(".dots").children()[nextActiveIndex]).addClass("active");
+
+                  updateSlides(nextActiveSlide);
+              }
+          });
+
+          $(".dots span").click(function(event) {
+              var slideIndex = $(this).index();
+              var nextActiveSlide = $($(".slider").children()[slideIndex]);
+              $(".dots span").removeClass("active");
+              $(this).addClass("active");
+
+              updateSlides(nextActiveSlide);
+          });
+
+          var updateSlides = function(nextActiveSlide) {
+              var nextActiveSlideIndex = $(nextActiveSlide).index();
+
+              $(".slide").removeClass("prev-1");
+              $(".slide").removeClass("next-1");
+              $(".slide").removeClass("active");
+              $(".slide").removeClass("prev-2");
+              $(".slide").removeClass("next-2");
+
+              nextActiveSlide.addClass("active");
+
+              nextActiveSlide.prev().addClass("prev-1");
+              nextActiveSlide.prev().prev().addClass("prev-2");
+              nextActiveSlide.addClass("active");
+              nextActiveSlide.next().addClass("next-1");
+              nextActiveSlide.next().next().addClass("next-2");
+          }
+
+          var updateToNextSlide = function(nextActiveSlide)
+          {
+              
+          }
+      }
+      return {
+          init: function() {
+              initSlider();
+          }
+      }
+  })();
+
+  $(function() {
+      Slider.init();
+  });
+    </script>
+    <script>
+      $(document).ready(function() {
+      $("#testimonial-slider").owlCarousel({
+        items: 3,
+        itemsDesktop:[1000,3],
+        itemsDesktopSmall:[979,2],
+        itemsTablet:[768, 2],
+        itemsMobile:[650, 1],
+        pagination: true,
+        autoPlay: true
+      });
+    });
+    </script>
+    <script>
+      $("nav ul").hide();
+      $(".nav-toggle").click( function() {
+        $("nav ul").slideToggle("medium");
       });
 
-      // Custom options for the carousel
-      var args = {
-        arrowRight : '.arrow-right', //A jQuery reference to the right arrow
-        arrowLeft : '.arrow-left', //A jQuery reference to the left arrow
-        speed : 1000, //The speed of the animation (milliseconds)
-        slideDuration : 4000 //The amount of time between animations (milliseconds)
+      $("nav ul li a, .brand a").click( function() {
+        $("nav ul").hide();
+      });
+
+      ////////////////////////////////////
+      // SMOOTH SCROLLING WITH NAV HEIGHT OFFSET
+
+      $(function() {
+        var navHeight = $("nav").outerHeight();
+        $('a[href*="#"]:not([href="#"])').click(function() {
+          if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+            var target = $(this.hash);
+            target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+            if (target.length) {
+              $('html, body').animate({
+                scrollTop: target.offset().top - navHeight
+              }, 1000);
+              return false;
+            }
+          }
+        });
+      });
+
+      ////////////////////////////////////
+      // NAVIGATION STICKY
+      var viewHeight = $(window).height();
+      var navigation = $('nav');
+
+      $(window).scroll( function() {
+        if ( $(window).scrollTop() > (viewHeight - 175) ) { //edit for nav height
+          navigation.addClass('sticky');
+        } else {
+          navigation.removeClass('sticky');
+        }
+      });
+
+      ////////////////////////////////////////////////
+      // MAKE THE SPLASH CONTAINER VERTICALLY CENTERED
+
+      function centerSplash() {
+        var navHeight = $("nav").outerHeight();
+        var splashHeight = $(".splash .container").height();
+        var remainingHeight = $(window).height() - splashHeight - navHeight;
+        $(".splash .container").css({"padding-top" : remainingHeight/2, "padding-bottom" : remainingHeight/2});
+      }
+
+      $( document ).ready( function() {
+        centerSplash();
+      });
+
+      $( window ).resize( function() {
+        centerSplash();
+      });
+    </script>
+    <script>
+      // typer for hello
+      window.onload = function() {
+        var elements = document.getElementsByClassName('txt-rotate');
+        for (var i = 0; i < elements.length; i++) {
+          var toRotate = elements[i].getAttribute('data-rotate');
+          var period = elements[i].getAttribute('data-period');
+          if (toRotate) {
+            new TxtRotate(elements[i], JSON.parse(toRotate), period);
+          }
+        }
+        // INJECT CSS
+        var css = document.createElement("style");
+        css.type = "text/css";
+        css.innerHTML = ".txt-rotate > .wrap { border-right: 10px solid #40E0D0 }";
+        document.body.appendChild(css);
       };
 
-      $('.carousel').Zippy(args);
+      var TxtRotate = function(el, toRotate, period) {
+        this.toRotate = toRotate;
+        this.el = el;
+        this.loopNum = 0;
+        this.period = parseInt(period, 1) || 1000;
+        this.txt = '';
+        this.tick();
+        this.isDeleting = false;
+      };
+
+      TxtRotate.prototype.tick = function() {
+        var i = this.loopNum % this.toRotate.length;
+        var fullTxt = this.toRotate[i];
+
+        if (this.isDeleting) {
+          this.txt = fullTxt.substring(0, this.txt.length - 1);
+        } else {
+          this.txt = fullTxt.substring(0, this.txt.length + 1);
+        }
+
+        this.el.innerHTML = '<span class="wrap">' + this.txt + '</span>';
+
+        var that = this;
+        var delta = 200 - Math.random() * 100;
+
+        if (this.isDeleting) {
+          delta /= 2;
+        }
+
+        if (!this.isDeleting && this.txt === fullTxt) {
+          delta = this.period;
+          this.isDeleting = true;
+        } else if (this.isDeleting && this.txt === '') {
+          this.isDeleting = false;
+          this.loopNum++;
+          delta = 200;
+        }
+
+        setTimeout(function() {
+          that.tick();
+        }, delta);
+      };
     </script>
-    <div id="root"></div>
+    <!-- START PRELOADER -->
+    <nav class="container-fluid nav">
+    <div class="container cf">
+        <div class="brand">
+          <a href="#splash">AB4S - Dare to Dream Big.</a>
+        </div>
+        <i class="fa fa-bars nav-toggle"></i>
+        <ul>
+          <li><a style="font-weight:bold;" href="#about">About Us</a></li>
+          <li><a style="font-weight:bold;" href="#skills">Skills &amp; Experience</a></li>
+          <li><a style="font-weight:bold;" href="#portfolio">Our Team</a></li>
+          <li><a style="font-weight:bold;" href="#contact">Contact</a></li>
+          <li><a style="font-weight:bold;" href="window.location.href = ''">Login</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container-fluid splash" id="splash">
+      <div class="container">      
+        <!-- start typer hello  -->
+        <div class="brand-heading">
+          <h1><span class="txt-rotate" data-period="100" data-rotate='[ "Hello,", "Olá,", "Hallo,", "Salut,", "Ciao,", "Hola,", "Hej," ]'></span></h1>
+        </div>
+        <!-- end typer hello -->          
+        <span class="lead">Unlocking Potential, Igniting Success</span>
+        <p style="font-size:x-large;font-weight: bold;">Welcome to AlphaBeta4Success, where expert tutors nurture your children's brilliance.</p>
+        <span class="continue"><a href="#about"><i class="fa fa-angle-down"></i></a></span>
+      </div>
+    </div>
+
+    <div class="container-fluid intro" id="about">      
+        <!-- About Section -->
+      <section id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">About</h2>
+                    <p style="text-align: left;">At AlphaBeta4Success, our distinctive approach in one-to-one and small group online classes is dedicated to fostering the holistic development of children. We believe in the power of personalized attention, guiding each child to unlock their full potential and cultivate a rich tapestry of knowledge and skills. Welcome to a transformative educational journey where AB4S paves the way for unparalleled growth and success.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="timeline">
+                        <li>
+                            <div class="timeline-image">
+                                <img class="img-circle img-responsive" src="img/about/1.jpg" alt="">
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4>2021-2022</h4>
+                                    <h4 class="subheading">Our Humble Beginnings</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p style="text-align: left;">We cherish our humble beginnings as they mark the foundation of our journey.</p>
+                                    <p style="text-align: left; font-weight: bold; font-size:medium;">Small Start, Big Dreams - Our Journey Beyond Boundaries.</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="timeline-inverted">
+                            <div class="timeline-image">
+                                <img class="img-circle img-responsive" src="img/about/2.jpg" alt="">
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4>March 2022</h4>
+                                    <h4 class="subheading">An Agency is Born</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p class="text-muted">The Birth of an Agency: Where Our Story Begins.Our agency was born from creativity and passion. It's the starting point of our journey to bring ideas to life and make a mark in our industry.</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="timeline-image">
+                                <img class="img-circle img-responsive" src="img/about/3.jpg" alt="">
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4>March 2023</h4>
+                                    <h4 class="subheading">Transition to Full Service</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p style="text-align: left;">Transitioning seamlessly, our journey unfolds as we embrace full-service excellence, expanding our capabilities to better serve and meet the diverse needs of our clients.</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="timeline-inverted">
+                            <div class="timeline-image">
+                                <img class="img-circle img-responsive" src="img/about/4.jpg" alt="">
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4>January 2024</h4>
+                                    <h4 class="subheading">Phase Two Expansion</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p class="text-muted">We're moving forward into Phase Two, which means we're growing and getting better. This expansion is all about reaching new opportunities and making a bigger impact in what we do.</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="timeline-inverted">
+                            <div class="timeline-image">
+                                <h4>Be Part
+                                    <br>Of Our
+                                    <br>Story!</h4>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+  </div>
+
+  <div class="container-fluid features" id="skills">
+    <div class="container cf">
+      <h2 style="color: #f95442;">Skills &amp; Experience</h2>   
+      <p style="text-align: left;">That's a fantastic foundation! Passionate, engaged, caring, and driven individuals can bring a lot of energy and commitment to any endeavor. If you're part of a group with these qualities, you already have a strong basis for success.</p>
+      <div class="slider-container">
+        <span class="arrow-left"></span>
+        <span class="arrow-right"></span>
+        <div class="slider" id="slider">          
+          <div class="slide active">
+              <h3>#1 - Our Mission</h3>
+              <p> Our mission is to provide expectional online tutoring that unlocks the full potential of every learner. We are dedicated to fostering a dynamic learning environment where personalized guidance, innovative teaching methods and a commitment to excellence come together.</p>           
+          </div>
+          <div class="slide next-1">
+              <h3>#2 - Our Vision</h3>
+              <p>To be the global leader in online education, empowering students to realize their full potential and achieve academic excellence regardless of their geographic location or socio-economic background.</p>
+          </div>
+          <div class="slide next-2">
+            <h3>#3 - Expert tutors</h3>
+            <p>Our expert tutors are like superheroes of knowledge, leading the way for students to learn and grow. They're really good at teaching and making sure everyone understands and feels confident in what they're learning.</p>
+          </div>
+          <div class="slide">            
+            <h3>#4 - Share knowledge</h3>
+            <p>AB4S offers classes in Math, Physics, Chemistry, and Biology for all curricula, covering IGCSE, GCSE, IBMYP, IBDP, State syllabus, and CBSE from classes 8 to 12. We also provide career counseling to help students navigate their educational journey and future paths.</p>
+          </div>
+          <div class="slide">
+            <h3>#6 - Trust</h3>
+            <p>With a commitment to trust, AB4S are dedicated to connecting you with the ideal teacher who embodies passion, expertise, and a genuine commitment to your learning journey.</p>
+          </div>
+          <div class="slide">
+            <h3>#7 - Learn confidently</h3>
+            <p>Empower yourself and learn confidently, knowing that your journey is supported by a dedicated and knowledgeable team committed to your success  - AB4S offer the best in education to learn & share confidently.</p>
+          </div>
+        </div>
+      </div>
+      </div>  
+    </div>
+  </div>
+
+  <div class="container-fluid portfolio" id="portfolio">   
+        <div class="container">
+          <h2>Meet Our Team</h2>    
+          <div class="row">
+            <div id="testimonial-slider" class="owl-carousel">
+              <div class="testimonial">
+                <span class="icon fa fa-quote-left"></span>
+                <p class="description">
+                  Ms. Kumudha Krishnan is a highly qualified professional with a diverse educational background. Holding a Master of Science (MSc) in Mathematics, she has built a strong foundation in advanced mathematical concepts and problem-solving skills. Complementing her expertise, She also possesses a Master of Arts (MA) in Education, providing her with valuable insights into educational theories and effective teaching methodologies.Certified Career Counsellor: Ms. Kumudha Krishnan is a certified career counsellor, enabling her to offer comprehensive guidance and support to students in making well-informed decisions about their future careers.
+                </p>
+                <p class="description">
+                  She is a highly accomplished and dedicated educator with a strong background in Mathematics and Education. As the founder of Alphabeta4success, she has utilized her extensive teaching experience and expertise to create a platform that fosters academic excellence and career guidance for students. With a passion for teaching, a deep understanding of Mathematics, and specialized training in career counseling, she is committed to helping students unlock their potential and achieve their academic and professional goals.
+                </p>
+                <p class="description">
+                  13 Years of Teaching Experience: With over a decade of teaching experience, Ms. Kumudha Krishnan has honed her pedagogical skills and has a deep understanding of the learning needs of students from diverse backgrounds.
+                </p>
+                <div class="testimonial-content">
+                  <div class="pic">
+                    <img src="images/Kumudha.png" alt="">
+                  </div>
+                  <h3 class="name">Ms. Kumudha Krishnan</h3>
+                  <span class="title">Founder</span>
+                </div>
+              </div>
+              <div class="testimonial">
+                <span class="icon fa fa-quote-left"></span>
+                <p class="description">
+                  Ms. Usha Shathish is a distinguished expert in Physics, holding a Master of Philosophy (MPhil) degree that reflects her extensive knowledge and advanced research capabilities in the field. Her exceptional academic performance, crowned by the recognition as a Gold Medallist in Post Graduation, underscores her unwavering dedication and excellence in the study of Physics.
+                </p>
+                <p class="description">
+                  She is a highly accomplished and visionary educator with a strong academic background in Physics. Her exceptional academic achievements and passion for teaching have positioned her as a leading figure in the field of online education. As the founder of Alphabeta4success, she has utilized her extensive teaching experience and educational expertise to create a platform that empowers students to excel in their academic pursuits. Her commitment to education and outstanding contributions to the field have earned her recognition and accolades, including the prestigious Iconic Women Award for her exemplary work in the realm of education.
+                </p>
+                <p class="description">
+                8 Years of Online Teaching Experience: With eight years of experience in online teaching, Ms. Usha Shathish has honed her teaching skills in delivering effective and engaging virtual learning experiences for students worldwide.
+                </p>
+                <div class="testimonial-content">
+                  <div class="pic">
+                    <img src="images/Usha.png" alt="">
+                  </div>
+                  <h3 class="name">Ms. Usha Shathish</h3>
+                  <span class="title">Founder</span>
+                </div>
+              </div>
+              
+              <div class="testimonial">
+                <span class="icon fa fa-quote-left"></span>
+                <p class="description">
+                  Ms. Meenakshi Ram is a holder of a Master of Science (MSc) degree in Biotechnology, showcasing her profound expertise in biological sciences and their practical applications.Currently pursuing a Ph.D. in Biotechnology, her dedication exemplifies her ongoing commitment to advancing her knowledge and expertise in the subject.
+                </p>
+                <p class="description">
+                  She is an accomplished and passionate educator with a strong academic background in Biotechnology. Her outstanding academic performance and impressive achievements have propelled her to become a leading figure in the field of online tutoring. As the founder of Alphabeta4success, she has leveraged her expertise and experience to create a platform that offers exceptional educational support to students. Her dedication to teaching, proven track record of success, and prestigious awards highlight her commitment to excellence in education.
+                </p>
+                <p class="description">
+                  11 Years of Online Tutoring Experience: With over a decade of experience in online tutoring, Ms. Meenakshi Ram specializes in providing guidance to students studying the International Baccalaureate Diploma Program (IBDP), Cambridge, IGCSE, NEET, and Advanced Placement (AP) curricula in Biology and Chemistry.
+                </p>
+                <div class="testimonial-content">
+                  <div class="pic">
+                    <img src="images/Meenakshi.png" alt="">
+                  </div>
+                  <h3 class="name">Ms. Meenakshi Ram</h3>
+                  <span class="title">Founder</span>
+                </div>
+              </div> 
+              <div class="testimonial">
+                <span class="icon fa fa-quote-left"></span>
+                <p class="description">
+                  Ms. Jayadevi is a Master of Science (MSc) in Biotechnology, holding a specialized degree that gives her in-depth knowledge of both biological and chemical sciences.Research Experience: With four years of research experience in the field of Biotechnology, she has honed her analytical and problem-solving skills, staying abreast of the latest developments and breakthroughs in the industry.
+                </p> 
+                <p class="description">
+                  She is a dynamic and driven professional with a strong academic background in Biotechnology. As the founder of Alphabeta4success, she has leveraged her extensive research experience and online teaching expertise to create a platform that empowers students to excel in their academic pursuits. Her passion for science and dedication to providing high-quality education make her an invaluable resource for students seeking guidance in Biotechnology and related fields.
+                </p>
+                <p class="description">
+                  4 Years of Online Teaching Experience: She has accumulated four years of experience in online teaching, specializing in Biotechnology and related subjects.
+                </p>
+                <div class="testimonial-content">
+                  <div class="pic">
+                    <img src="images/Jayadevi.png" alt="">
+                  </div>
+                  <h3 class="name">Ms. Jayadevi</h3>
+                  <span class="title">Founder</span>
+                </div>
+              </div>                                   
+            </div>
+          </div> 
+        </div>      
+  </div>  
+
+  <div class="container-fluid contact" id="contact">
+    <div class="container">
+      <form>
+        <h2>Contact Me</h2>
+        <input type="text" placeholder="Name" id="name" name="name" class="full-half">
+        <input type="email" placeholder="Email" id="email" name="email" class="full-half">
+        <input type="text" placeholder="Subject" id="subject" name="subject">
+        <textarea placeholder="Message" id="message" name="message"></textarea>
+        <input type="submit" value="Send">
+      </form>
+    </div>
+  </div>
+
+  <footer class="container-fluid footer">
+    <div class="container">
+      <p class="m-0 text-center text-white">
+        Copyright &copy; AlphaBeta4Success 2024
+      </p>
+    </div>
+  </footer>
+  <!-- end footer -->
+  <div id="root"></div>
   </body>
 </html>
