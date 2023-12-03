@@ -1,12 +1,11 @@
 import React from "react";
 import "./Login.css";
+import { Navigate } from "react-router-dom";
 
 function Login() {
   return (
-
     <div class="main">  	
     <input type="checkbox" id="chk" aria-hidden="true"/>
-
         <div class="signup">
             <form>
                 <label for="chk" aria-hidden="true">Sign up</label>
@@ -20,9 +19,9 @@ function Login() {
         <div class="login">
             <form>
                 <label for="chk" aria-hidden="true">Login</label>
-                <input type="email" name="email" placeholder="Email" required=""/>
+                <input type="email" name="email" placeholder="Userid" required=""/>
                 <input type="password" name="pswd" placeholder="Password" required=""/>
-                <button>Login</button>
+                <button onClick={() => Navigate("/dashboard")}>Login</button>
             </form>
         </div>
 </div>

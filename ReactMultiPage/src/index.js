@@ -13,6 +13,7 @@ import {
   Posts,
   Post,
   Login,
+  Dashboard,  
 } from "./components";
 
 ReactDOM.render(
@@ -21,12 +22,13 @@ ReactDOM.render(
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/about" element={<About />} />
+      <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/login" element={<Login />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/blog" element={<Blog />}>
         <Route path="" element={<Posts />} />
         <Route path=":postSlug" element={<Post />} />
-      </Route>
+      </Route>      
     </Routes>
     <Footer />
   </Router>,

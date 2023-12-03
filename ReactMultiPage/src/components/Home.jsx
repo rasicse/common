@@ -1,24 +1,26 @@
 import React from "react";
+import "./homepage.css";
 
 function Home() {
   return (
-    <div className="home">
-      <div class="container">
-        <div class="row align-items-center my-5">
-          <div class="col-lg-7">          
-          <img src="./images/logo.jpg" alt="logo" />
+    <div className="home">          
+      <div class="wrapper">  
+      <div class="carousel">
+        <div class="inner">
+          <div class="slide active">
+            <h1>1</h1>
           </div>
-          <div class="col-lg-5">
-            <h1 class="font-weight-light"><strong>Our Beliefs</strong></h1>
-            <p>
-            At AlphaBeta4Success.com, We helps students learn difficult concepts and get better grades by connecting them with professional teachers in a digital classroom. Whether you need help understanding a complex topic or want to take your knowledge to the next level, we have tutors who can help you achieve your academic goals.
-            </p>
-            <p>
-            AB4S is a personalized, student-focused learning platform that meets the needs of students in a digital age.
-            </p>
+          <div class="slide">
+            <h1>2</h1>
+          </div>
+          <div class="slide">
+            <h1>3</h1>
           </div>
         </div>
+        <div class="arrow arrow-left"></div>
+        <div class="arrow arrow-right"></div>
       </div>
+      </div>  
     </div>
   );
 }
